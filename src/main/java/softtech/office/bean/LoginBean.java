@@ -13,6 +13,7 @@ public class LoginBean implements Serializable {
 	@NotEmpty(message="パスワードを入力してください。")
 	private String password;
 
+
 	/**
 	 * @return employeeID
 	 */
