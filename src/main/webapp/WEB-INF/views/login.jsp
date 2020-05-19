@@ -7,45 +7,42 @@
 
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>社員ログイン</title>
-<link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="css/common.css">
 </head>
 <body>
-	<div class="box">
-		<form:form name="theForm" id="theForm" modelAttribute="loginBean" method="post" action="login">
-
-			<div class="label1">
-				<label>ソフトテク株式会社</label>
-			</div>
-			<br>
-			<div>
-				<label>社内管理システム</label>
-			</div>
-
-			<div style="color: red">
-				<h5>
-					<c:forEach items="${errors}" var="error">
+	<form:form name="theForm" id="theForm" modelAttribute="loginBean"
+		method="post" action="login">
+		<table bgcolor="lightskyblue" width="480" height="400">
+			<tr>
+				<td colspan="2" rowspan="1">ソフトテク株式会社</td>
+			</tr>
+			<tr align="center">
+				<td colspan="2" rowspan="1" height="60">社内管理システム</td>
+			</tr>
+			<tr style="color: red;" align="center">
+				<td colspan="2" rowspan="1" height="60">
+				    <c:forEach items="${errors}" var="error">
 						<spring:message message="${error}" />
-					</c:forEach>
-				</h5>
-			</div>
-
-			<div>
-				<label class="label2">社員ID：</label> <input id="employeeID"
-					name="employeeID" type="text" Value="">
-			</div>
-			<br>
-			<div>
-				<label class="label2">パスワード：</label> <input id="password"
-					name="password" type="password" Value="">
-			</div>
-			<br>
-			<div>
-				<input type="submit" id="login_btn" name="login" Value="ログイン">
-				<input type="submit" name="resetpswd" id="reset_btn" value="パスワード変更">
-			</div>
-		</form:form>
-	</div>
+					</c:forEach></td>
+			</tr>
+			<tr>
+				<td align="right" width="200" height="50">社員ID：</td>
+				<td><input name="employeeID" type="text"
+					Value=""></td>
+			</tr>
+			<tr>
+				<td align="right"  width="200">パスワード：</td>
+				<td><input name="password" type="password"
+					Value=""></td>
+			</tr>
+			<tr>
+				<td align="right" width="200"><input style="border-radius: 3px" type="submit" id="login_btn" name="login"
+					Value="ログイン"></td>
+				<td align="center"><input style="border-radius: 3px" type="submit" name="resetpswd"
+					id="reset_btn" value="パスワード変更"></td>
+			</tr>
+		</table>
+	</form:form>
 </body>
 </html>

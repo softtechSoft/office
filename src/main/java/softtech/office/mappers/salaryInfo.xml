@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="softtech.office.dao.SararyInfoDao">
-    <select id="getSalaryInfo" parameterType="softtech.office.bean.SalaryinfoSelectBean" resultType="softtech.office.bean.SalaryinfoBean">
-        SELECT * FROM salaryinfo where employeeID = #{employeeID} and month = #{month}
-    </select>
+<mapper namespace="softtech.office.dao.SalaryInfoDao">
+	<!-- ログイン者IDおよび当月文字列を持っち、当月分の給料データを取得する -->
+	<select id="getSalaryInfo"
+		parameterType="softtech.office.bean.SalaryinfoSelectBean"
+		resultType="softtech.office.bean.SalaryinfoBean">
+		<!-- SELECT * FROM salaryinfo where employeeID = #{employeeID} and month
+			= #{month} -->
+		SELECT employee.employeeName,employee.address,salaryinfo.*
+		FROM employee,salaryinfo
+		WHERE employee.employeeID = salaryinfo.employeeID
+		AND salaryinfo.employeeID = #{employeeID}
+		AND salaryinfo.month = #{month}
+	</select>
+	<!-- ログイン者IDおよび前月文字列を持っち、前月分の給料データを取得する -->
+	<select id="getPreMonthSalaryinfo"
+		parameterType="softtech.office.bean.SalaryinfoSelectBean"
+		resultType="softtech.office.bean.SalaryinfoBean">
+		SELECT employee.employeeName,employee.address,salaryinfo.*
+		FROM employee,salaryinfo
+		WHERE employee.employeeID = salaryinfo.employeeID
+		AND salaryinfo.employeeID = #{employeeID}
+		AND salaryinfo.month = #{premonth}
+	</select>
+	<!-- ログイン者IDおよび次月文字列を持っち、次月分の給料データを取得する -->
+	<select id="getNextMonthSalaryinfo"
+		parameterType="softtech.office.bean.SalaryinfoSelectBean"
+		resultType="softtech.office.bean.SalaryinfoBean">
+		SELECT employee.employeeName,employee.address,salaryinfo.*
+		FROM employee,salaryinfo
+		WHERE employee.employeeID =
+		salaryinfo.employeeID
+		AND salaryinfo.employeeID = #{employeeID}
+		AND
+		salaryinfo.month = #{nextmonth}
+	</select>
+
 </mapper>

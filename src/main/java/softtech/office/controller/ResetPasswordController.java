@@ -2,18 +2,7 @@ package softtech.office.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import softtech.office.bean.EmployeeBean;
-import softtech.office.bean.LoginBean;
-import softtech.office.dao.SararyInfoDao;
-import softtech.office.service.EmployeeService;
-import softtech.office.service.LoginService;
 
 /**
  *
@@ -25,7 +14,7 @@ import softtech.office.service.LoginService;
 public class ResetPasswordController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ResetPasswordController.class);
-
+/*
 	@Autowired
 	public SararyInfoDao imp;
 
@@ -70,4 +59,5 @@ public class ResetPasswordController {
 	public void setImp(SararyInfoDao imp) {
 		this.imp = imp;
 	}
+	*/
 }

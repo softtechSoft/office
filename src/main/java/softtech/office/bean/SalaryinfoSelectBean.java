@@ -1,6 +1,5 @@
 package softtech.office.bean;
 
-
 /**
  *  給料明細クラス
  */
@@ -8,6 +7,9 @@ package softtech.office.bean;
 public class SalaryinfoSelectBean {
 	String employeeID;
 	String month;
+	String premonth;
+	String nextmonth;
+
 	/**
 	 * @return employeeID
 	 */
@@ -32,4 +34,29 @@ public class SalaryinfoSelectBean {
 	public void setMonth(String month) {
 		this.month = month;
 	}
+	/**
+	 * @return premonth
+	 */
+	public String getPremonth() {
+		return premonth;
+	}
+	/**
+	 * @param premonth セットする nxtmonth
+	 */
+	public void setPremonth(String premonth) {
+		this.premonth = premonth;
+	}
+	/**
+	 * @return nextmonth
+	 */
+	public String getNextmonth() {
+		return nextmonth;
+	}
+	/**
+	 * @param nextmonth セットする nextmonth
+	 */
+	public void setNextmonth(String nextmonth) {
+		this.nextmonth = nextmonth;
+	}
+
 }
