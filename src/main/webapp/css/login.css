@@ -1,0 +1,47 @@
+body
+{
+	box-sizing: border-box;
+	padding: 100px;
+}
+.box
+{
+	width:480px;
+	height:400px;
+	margin: auto;
+	background: lightskyblue;
+	padding:15px;
+	color: #000000;
+	font-family: arial;
+	font-size: 15pt;
+	text-align: center;
+	border-radius: 10px;
+    margin-top: 5px;
+}
+
+.label1{
+	text-align: left;
+	margin: 10px;
+}
+
+.label2{
+	width: 120px;
+	display: inline-block;
+	text-align: right;
+	vertical-align: top;
+}
+
+input[type="text"]
+{
+	text-align: left;
+	width: 150px;
+
+}
+input[type="password"]
+{
+	text-align: left;
+	width: 150px;
+
+}
+
+
+

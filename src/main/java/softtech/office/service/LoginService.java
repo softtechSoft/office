@@ -1,13 +1,13 @@
 package softtech.office.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import softtech.office.bean.EmployeeBean;
 import softtech.office.bean.LoginBean;
 import softtech.office.dao.EmployeeInfoDao;
 
-@Component
+@Service
 public class LoginService  {
 
 	// 社員情報DAO

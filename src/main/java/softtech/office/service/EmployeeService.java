@@ -3,14 +3,19 @@ package softtech.office.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import softtech.office.bean.EmployeeBean;
-import softtech.office.bean.LoginBean;
+import softtech.office.bean.ResetPasswordBean;
+import softtech.office.dao.EmployeeInfoDao;
 
 
 @Component
 public class EmployeeService {
+
+	@Autowired
+	EmployeeInfoDao employeeDao;
 
 	public List<EmployeeBean> getEmployee(String employeeID) {
 
@@ -24,8 +29,8 @@ public class EmployeeService {
 		return rtns;
 	}
 
-	public boolean resetPassword(LoginBean loginbean) {
-		// TODO 自動生成されたメソッド・スタブ
+	public boolean resetPassword(ResetPasswordBean resetPasswordBean) {
+
 		return false;
 	}
 }

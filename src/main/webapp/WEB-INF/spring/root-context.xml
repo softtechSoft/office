@@ -57,7 +57,7 @@
 	<bean id="SalaryInfoDao"
 		class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
-			value="softtech.office.dao.SararyInfoDao" />
+			value="softtech.office.dao.SalaryInfoDao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 

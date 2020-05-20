@@ -9,4 +9,5 @@ import softtech.office.bean.EmployeeBean;
  */
 public interface EmployeeInfoDao {
 	EmployeeBean getEmployee(String mailAdress);
+	void resetPassword(String mailAddress,String oldPaswd,String newPaswd);
 }

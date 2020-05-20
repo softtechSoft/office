@@ -1,0 +1,27 @@
+
+input[type="reset"]{
+	margin-top: 10px;
+	width: 120px;
+	text-align: middle;
+	border-radius: 10px;
+	margin-left: 350px;
+	cursor: pointer;
+}
+
+input[type="submit"]
+{
+	margin-top: 10px;
+	width: 120px;
+	text-align: middle;
+	border-radius: 10px;
+	margin-left: 350px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover{
+	background-color:#808080;
+}
+
+input[type="reset"]:hover{
+	background-color:#808080;
+}
