@@ -1,0 +1,69 @@
+                        社内管理システム構築手順。
+
+１）Eclipseおよびプロジェクト
+   ①Eclipse（All one)をダウンロードし、C:\（直下）にインストール。
+   ②workspace.zipをC:\Eclipseインストールされたフォルダに解凍する。
+   ③Eclipseを立ち上げ、②のWorkSpaceを選択する。
+
+２）MySQL
+　　①mysql-installer-web-community-8.0.12.0をダウンロードする
+　　②mysql-installer-web-community-8.0.12.0.msi　を実行
+		https://www.petitmonte.com/database/mysql_initial_setting.html
+		を参照。
+	　	・Customを選択
+　		・MySQLServer8.0.11
+		　パスワード：softtech
+		
+ 　　③認証のレベルDownの設定
+ 　  　　1)サービスにて、MySQLを停止する。
+ 　　　　2)設定ファイル変更（例：C:\ProgramData\MySQL\MySQL Server 8.0\my.ini)
+ 　　　　　　　　default_authentication_plugin=mysql_native_password　
+ 　　　　3)MySQL起動。
+ 　　　　　（以上の設定ファイルは効かない場合、下記コマンドを実行する
+ 　　　　　　　　alter user 'root'@'localhost' identified WITH mysql_native_password by 'softtech';
+ 　 　　　　)
+ 　　　　4)確認：
+ 　　　　　select user,plugin from mysql.user;
+ 　　　　　　mysql_native_password　である事を確認。
+ 　　
+ 	④DB作成：
+　		1)MｙSQLへログイン
+　		　　c:>mysql -u root -p
+  		　　　password： softtech
+  
+   		2)社内管理DBを作成
+   		　create database softtech_office;
+   		
+   		3)ユーザー作成
+   		（この手順略
+   			create user 'comuser'@'localhost' identified by 'softtech'; (不良?）
+   			GRANT ALL ON softtech_office;.* TO 'comuser'@'localhost';(不良?）
+  			exit
+  		)
+  		
+  	以上、DBの作成が完了。
+  
+  	⑤社内管理システムテーブル作成
+  	　1)DBへログイン
+  　　　mysql -u root -p
+  　　　password: softtech
+　　　2)テーブル作成SQL等は
+      社内管理_DB編を参照.xlsxを参照。
+	  
+
+王明光サポート：
+
+　１）プロジェクトを右クリック ＞ Maven ＞ プロジェクトの更新(U)をクリックします。
+　２）プロジェクトを右クリック ＞ 実行 ＞ install
+Springの参照URL
+　https://tech.pjin.jp/blog/2016/04/28/springframework1/
+
+
+
+2020/04/17
+①Eclipseダウンロード
+　https://mergedoc.osdn.jp/
+
+　Eclipse 4.7 Oxygenを選択（JDK8X＋Tomcat8.0Xを使うため）
+　Java列の　Windows　
+　
