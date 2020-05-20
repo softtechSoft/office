@@ -1,0 +1,19 @@
+
+JAVA資料
+
+　入門：
+　　http://www.itsenka.com/contents/development/java/
+
+　Doc
+　https://docs.oracle.com/javase/jp/8/docs/api/index.html
+
+JSP/JSTL
+ 
+ 入門：
+ http://itref.fc2web.com/java/jsp/
+ 
+ http://www.w3big.com/ja/jsp/jsp-jstl.html
+ 
+Spring
+　https://tech.pjin.jp/blog/2016/04/28/springframework1/
+　
