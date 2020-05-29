@@ -3,6 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="softtech.office.dao.EmployeeInfoDao">
     <select id="getEmployee" parameterType="String" resultType="softtech.office.bean.EmployeeBean">
-        SELECT * FROM employee where mailAdress = #{mailAdress}
+        SELECT * FROM employee where status = '0' and mailAdress = #{mailAdress}
     </select>
 </mapper>
