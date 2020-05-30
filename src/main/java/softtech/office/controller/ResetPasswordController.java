@@ -71,16 +71,17 @@ public class ResetPasswordController {
 			if (rtnbl) {
 				if(resetPasswordBean.getNewPassword().equals(resetPasswordBean.getNewPasswordConfirm())) {
 
-				ResetPasswordBean setPwdBean = new ResetPasswordBean();
+			ResetPasswordBean setPwdBean = new ResetPasswordBean();
 
-				setPwdBean = resetPwdService.setNewPassword(resetPwdService.resetLoginID(),resetPasswordBean.getNewPasswordConfirm());
-				model.addAttribute("employeeBean", setPwdBean);
+			setPwdBean = resetPwdService.setNewPassword(resetPwdService.resetLoginID(),resetPasswordBean.getNewPasswordConfirm());
+			LoginBean newloginbean = new LoginBean();
+			newloginbean.setEmployeeID(resetPasswordBean.getEmployeeID());
+			model.addAttribute("loginBean", newloginbean);
 
-
-				//パスワード変更成功メッセージ表示
-				List<FieldError> lst = new ArrayList<FieldError>();
-				FieldError err = new FieldError("", "", "パスワード変更しました！");
-				lst.add(err);
+			//パスワード変更成功メッセージ表示
+			List<FieldError> lst = new ArrayList<FieldError>();
+			FieldError err = new FieldError("", "", "パスワード変更しました！");
+			lst.add(err);
 				model.addAttribute("errors", lst);
 
 				}else {
@@ -97,7 +98,7 @@ public class ResetPasswordController {
 					return "resetPassword";
 				}
 
-				return "login";
+			return "login";
 
 			} else {
 				// エラーメッセージを表示する
@@ -107,6 +108,10 @@ public class ResetPasswordController {
 				lst.add(err1);
 				lst.add(err2);
 				model.addAttribute("errors", lst);
+				ResetPasswordBean resetPwdBean = new ResetPasswordBean();
+				resetPwdBean.setEmployeeID(resetPasswordBean.getEmployeeID());
+				resetPwdBean.setOldPassword(resetPasswordBean.getOldPassword());
+				model.addAttribute("resetPasswordBean", resetPwdBean);
 
 				return "resetPassword";
 			}
