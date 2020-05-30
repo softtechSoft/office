@@ -14,7 +14,7 @@
 <body>
 	<form:form name="newPwdBean" id="newPwdBean" modelAttribute="resetPasswordBean"
 		method="post" action="resetPassword">
-		<table bgcolor="lightskyblue" width="680" height="600">
+		<table bgcolor="lightskyblue" width="480" height="400">
 			<tr>
 				<td colspan="2" rowspan="1">ソフトテク株式会社</td>
 			</tr>
