@@ -31,8 +31,6 @@ public class ResetPasswordBean implements Serializable {
 	private String newPassword;
 
 	//新しいパスワード（確認）
-	//@Compare(left = "newPassword", right = "newPasswordConfirm", operator = Compare.Operator.EQUAL, requireBoth = true)
-	//@EqualToField(value = "newPassword", message = "新パスワードと再入力パスワードが一致しません。")
 	private String newPasswordConfirm;
 
 	/**

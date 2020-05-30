@@ -18,25 +18,18 @@
 			<tr>
 				<td colspan="2" rowspan="1">ソフトテク株式会社</td>
 			</tr>
-			<tr align="center">
-				<td colspan="2" rowspan="1" height="60">社内管理システム</td>
-			</tr>
-
 			<tr style="color: red;" align="center">
 				<td colspan="2" rowspan="1" height="60">
 				   <c:forEach items="${errors}" var="error">
 						<spring:message message="${error}" />
 					</c:forEach></td>
 			</tr>
-			<tr>
-		        <td align="center" style="color: red" colspan="2" rowspan="1"><form:errors path="employeeID" /></td>
+			<tr align="center">
+				<td colspan="2" rowspan="1" height="60">社内管理システム</td>
 			</tr>
 			<tr>
 				<td align="right">メールアカウント：</td>
 				<td><form:input path="employeeID" type="text"/></td>
-			</tr>
-			<tr>
-				<td align="center" style="color: red" colspan="2" rowspan="1"><form:errors path="oldPassword" /></td>
 			</tr>
 			<tr>
 				<td align="right">旧パスワード：</td>
@@ -44,15 +37,9 @@
 					Value=""/></td>
 			</tr>
 			<tr>
-				<td align="center" style="color: red" colspan="2" rowspan="1"><form:errors path="newPassword" /></td>
-			</tr>
-			<tr>
 				<td align="right">新パスワード：</td>
 				<td><input id="newPassword" name="newPassword" type="password"
 					Value=""></td>
-			</tr>
-			<tr>
-				<td align="center" style="color: red" colspan="2" rowspan="1"><form:errors path="newPasswordConfirm" /></td>
 			</tr>
 			<tr>
 				<td align="right">新パスワード：</td>

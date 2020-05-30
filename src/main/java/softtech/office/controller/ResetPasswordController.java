@@ -57,7 +57,7 @@ public class ResetPasswordController {
 
 	//パスワード変更
 	@RequestMapping(value = "resetPassword", params = "reset", method = RequestMethod.POST)
-    public String resetPassword(@Validated @ModelAttribute("ResetPasswordBean") ResetPasswordBean resetPasswordBean,BindingResult result, Model model) {
+    public String resetPassword(@Validated @ModelAttribute("resetPasswordBean") ResetPasswordBean resetPasswordBean,BindingResult result, Model model) {
 		// 入力にエラーある場合、画面にエラーを表示する。
 			if (result.hasErrors()) {
 				model.addAttribute("errors", result.getFieldErrors());
@@ -91,10 +91,10 @@ public class ResetPasswordController {
 					lst.add(err);
 					model.addAttribute("errors", lst);
 					//
-					ResetPasswordBean resetPwdBean = new ResetPasswordBean();
-					resetPwdBean.setEmployeeID(resetPasswordBean.getEmployeeID());
-					resetPwdBean.setOldPassword(resetPasswordBean.getOldPassword());
-					model.addAttribute("resetPasswordBean", resetPwdBean);
+//					ResetPasswordBean resetPwdBean = new ResetPasswordBean();
+//					resetPwdBean.setEmployeeID(resetPasswordBean.getEmployeeID());
+//					resetPwdBean.setOldPassword(resetPasswordBean.getOldPassword());
+//					model.addAttribute("resetPasswordBean", resetPwdBean);
 					return "resetPassword";
 				}
 
@@ -108,10 +108,10 @@ public class ResetPasswordController {
 				lst.add(err1);
 				lst.add(err2);
 				model.addAttribute("errors", lst);
-				ResetPasswordBean resetPwdBean = new ResetPasswordBean();
-				resetPwdBean.setEmployeeID(resetPasswordBean.getEmployeeID());
-				resetPwdBean.setOldPassword(resetPasswordBean.getOldPassword());
-				model.addAttribute("resetPasswordBean", resetPwdBean);
+//				ResetPasswordBean resetPwdBean = new ResetPasswordBean();
+//				resetPwdBean.setEmployeeID(resetPasswordBean.getEmployeeID());
+//				resetPwdBean.setOldPassword(resetPasswordBean.getOldPassword());
+//				model.addAttribute("resetPasswordBean", resetPwdBean);
 
 				return "resetPassword";
 			}

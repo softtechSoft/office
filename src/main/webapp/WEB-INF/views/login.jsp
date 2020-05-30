@@ -17,14 +17,14 @@
 			<tr>
 				<td colspan="2" rowspan="1">ソフトテク株式会社</td>
 			</tr>
-			<tr align="center">
-				<td colspan="2" rowspan="1" height="60">社内管理システム</td>
-			</tr>
-			<tr style="color: red;" align="center">
+						<tr style="color: red;" align="center">
 				<td colspan="2" rowspan="1" height="60">
 				    <c:forEach items="${errors}" var="error">
 						<spring:message message="${error}" />
 					</c:forEach></td>
+			</tr>
+			<tr align="center">
+				<td colspan="2" rowspan="1" height="60">社内管理システム</td>
 			</tr>
 			<tr>
 				<td align="right" width="200" height="50">メールアカウント：</td>

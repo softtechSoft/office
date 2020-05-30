@@ -62,7 +62,7 @@ public class LoginController {
 	 * @return  遷移先画面
 	 */
 	@RequestMapping(value = "login", params = "login", method = RequestMethod.POST)
-	public String login(@Valid @ModelAttribute("LoginBean") LoginBean loginBean,
+	public String login(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			BindingResult result, Model model) {
 		// 入力にエラーある場合、画面にエラーを表示する。
 		if (result.hasErrors()) {
@@ -151,7 +151,6 @@ public class LoginController {
 				//「前月」ボタン非活性フラグを設定する
 				model.addAttribute("preflg", false);
 			}
-
 			model.addAttribute("salaryinfo", slrybean);
 			model.addAttribute("nextflg", false);
 
@@ -167,6 +166,10 @@ public class LoginController {
 			lst.add(err1);
 			lst.add(err2);
 			model.addAttribute("errors", lst);
+//			LoginBean loginbean = new LoginBean();
+//			loginbean.setEmployeeID(loginBean.getEmployeeID());
+//			loginbean.setPassword(loginBean.getPassword());
+//			model.addAttribute("loginBean", loginbean);
 			return "login";
 		}
 
@@ -180,7 +183,7 @@ public class LoginController {
 	 * @return  遷移先画面
 	 */
 	@RequestMapping(value = "login", params = "resetpswd", method = RequestMethod.POST)
-	public String resetPassword(@ModelAttribute("LoginBean") LoginBean loginBean,Model model) {
+	public String resetPassword(@ModelAttribute("loginBean") LoginBean loginBean,Model model) {
 
 		//パスワード重置画面にメールアカウントの値を渡す
 		ResetPasswordBean resetPwdBean = new ResetPasswordBean();
