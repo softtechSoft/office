@@ -1,6 +1,7 @@
 package softtech.office.dao;
 
 import softtech.office.bean.EmployeeBean;
+import softtech.office.bean.ResetPasswordBean;
 
 /**
  *社員情報DAO
@@ -9,5 +10,11 @@ import softtech.office.bean.EmployeeBean;
  */
 public interface EmployeeInfoDao {
 	EmployeeBean getEmployee(String mailAdress);
-	void resetPassword(String mailAddress,String oldPaswd,String newPaswd);
+
+	EmployeeBean getEmployeeOldPwd(String string);
+
+	EmployeeBean setNewPassword(String string);
+
+	ResetPasswordBean setNewPassword(EmployeeBean employeeBean);
+
 }

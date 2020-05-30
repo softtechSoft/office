@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import softtech.office.bean.LoginBean;
+import softtech.office.bean.ResetPasswordBean;
 import softtech.office.bean.SalaryinfoBean;
+import softtech.office.service.EmployeeService;
 import softtech.office.service.LoginService;
 import softtech.office.service.SalaryinfoService;
 import softtech.office.utily.OfficeUtily;
@@ -34,6 +36,9 @@ public class LoginController {
 	LoginService loginService;
 
 	@Autowired
+	EmployeeService employeeService;
+
+	@Autowired
 	SalaryinfoService salaryinfoService;
 
 	/**
@@ -44,7 +49,7 @@ public class LoginController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		LoginBean loginbean = new LoginBean();
-		model.addAttribute("loginbean", loginbean);
+		model.addAttribute("loginBean", loginbean);
 		return "login";
 	}
 
@@ -57,7 +62,7 @@ public class LoginController {
 	 * @return  遷移先画面
 	 */
 	@RequestMapping(value = "login", params = "login", method = RequestMethod.POST)
-	public String login(@Valid @ModelAttribute("LoginBean") LoginBean loginbean,
+	public String login(@Valid @ModelAttribute("LoginBean") LoginBean loginBean,
 			BindingResult result, Model model) {
 		// 入力にエラーある場合、画面にエラーを表示する。
 		if (result.hasErrors()) {
@@ -66,14 +71,14 @@ public class LoginController {
 		}
 
 		//Login処理
-		boolean rtnbl = loginService.doLogin(loginbean);
+		boolean rtnbl = loginService.doLogin(loginBean);
 
 		// ログイン成功。
 		if (rtnbl) {
 			// 　ログイン者の社員IDおよび当月を持っち給料詳細データを取得する
 			SalaryinfoBean slrybean = salaryinfoService.getSalaryinfo(loginService.getLoginID());
 
-			if(slrybean != null) {
+			if (slrybean != null) {
 
 				OfficeUtily officeUtily = new OfficeUtily();
 				//データ変換処理
@@ -136,10 +141,10 @@ public class LoginController {
 				}
 				//「前月」ボタン活性フラグを設定する
 				model.addAttribute("preflg", true);
-			}else {
+			} else {
 				//詳細データが存在していない場合、エラーメッセージを表示する
 				List<FieldError> lst = new ArrayList<FieldError>();
-				FieldError err1 = new FieldError("", "", "該当給料データはありません。");
+				FieldError err1 = new FieldError("", "", "新パスワードと再入力パスワードが一致しません。");
 				lst.add(err1);
 				model.addAttribute("errors", lst);
 				slrybean = new SalaryinfoBean();
@@ -168,21 +173,30 @@ public class LoginController {
 	}
 
 	/**
-	 * パスワードを再設定
+	 * パスワード変更
 	 *
 	 * @param loginbean　画面入力値　
 	 * @param model　モデル
 	 * @return  遷移先画面
 	 */
 	@RequestMapping(value = "login", params = "resetpswd", method = RequestMethod.POST)
-	public String resetPassword(LoginBean loginbean, Model model) {
+	public String resetPassword(@ModelAttribute("LoginBean") LoginBean loginBean,Model model) {
 
+		//パスワード重置画面にメールアカウントの値を渡す
+		ResetPasswordBean resetPwdBean = new ResetPasswordBean();
+		resetPwdBean.setEmployeeID(loginBean.getEmployeeID());
+		model.addAttribute("resetPasswordBean", resetPwdBean);
+
+			// パスワード重置画面へ遷移
+			return "resetPassword";
+
+		/*
 		List<FieldError> lst = new ArrayList<FieldError>();
 		FieldError err1 = new FieldError("", "", "只今工事中・・・");
 		lst.add(err1);
 		model.addAttribute("errors", lst);
 		return "login";
-
+		*/
 	}
 
 }

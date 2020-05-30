@@ -3,6 +3,23 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="softtech.office.dao.EmployeeInfoDao">
     <select id="getEmployee" parameterType="String" resultType="softtech.office.bean.EmployeeBean">
-        SELECT * FROM employee where status = '0' and mailAdress = #{mailAdress}
+        SELECT employeeID,password
+        FROM employee
+        WHERE mailAdress = #{mailAdress}
     </select>
+    <!-- ログイン者IDとパスワードを持っち、パスワード変更画面でログインする -->
+	<select id="getEmployeeOldPwd"
+		parameterType="softtech.office.bean.ResetPasswordBean"
+		resultType="softtech.office.bean.EmployeeBean">
+        SELECT employeeID,password
+        FROM employee
+        WHERE mailAdress = #{mailAdress}
+	</select>
+	<select id="setNewPassword"
+		parameterType="softtech.office.bean.EmployeeBean"
+		resultType="String">
+        UPDATE employee
+        SET password = #{password}
+        WHERE employeeID = #{employeeID}
+	</select>
 </mapper>

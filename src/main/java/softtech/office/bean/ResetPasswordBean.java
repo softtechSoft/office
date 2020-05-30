@@ -2,25 +2,38 @@ package softtech.office.bean;
 
 import java.io.Serializable;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
-//@Data
+import org.hibernate.validator.constraints.NotEmpty;
+//import org.terasoluna.gfw.common.validator.constraints.Compare;
+
+/**
+ *  社員情報パスワード変更クラス
+ */
+//@Confirm(field = "newPassword", confirmField = "newPasswordConfirm")
 public class ResetPasswordBean implements Serializable {
-	// 社員ID
-	@NotEmpty(message="社員IDを入力してください。")
+	private static final long serialVersionUID = 1L;
+
+	// メールアカウント
+	@Pattern(regexp = "^([\\w])+([\\w\\._-])*\\@([\\w])+([\\w\\._-])*\\.([a-zA-Z])+$",message = "正しいメールアドレスを入力してください。")
+	@NotEmpty(message="メールアカウントを入力してください。")
 	private String employeeID;
 
 	//旧パスワード
 	@NotEmpty(message="旧パスワードを入力してください。")
 	private String oldPassword;
 
-	//パスワード1
-	@NotEmpty(message="パスワード1を入力してください。")
-	private String password1;
+	//新しいパスワード
+	@NotEmpty(message="新パスワードを入力してください。")
+	@Size(min = 3,max = 20,message="パスワードは{min}文字以上{max}文字以下です。")
+	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "入力された値は正しくありません。半角英数字の形式で入力してください。")
+	private String newPassword;
 
-	//パスワード2
-	@NotEmpty(message="パスワード2を入力してください。")
-	private String password2;
+	//新しいパスワード（確認）
+	//@Compare(left = "newPassword", right = "newPasswordConfirm", operator = Compare.Operator.EQUAL, requireBoth = true)
+	//@EqualToField(value = "newPassword", message = "新パスワードと再入力パスワードが一致しません。")
+	private String newPasswordConfirm;
 
 	/**
 	 * @return employeeID
@@ -28,53 +41,47 @@ public class ResetPasswordBean implements Serializable {
 	public String getEmployeeID() {
 		return employeeID;
 	}
-
 	/**
 	 * @param employeeID セットする employeeID
 	 */
 	public void setEmployeeID(String employeeID) {
 		this.employeeID = employeeID;
 	}
-
 	/**
-	 * @return oldPassword
+	 * @return 旧パスワード
 	 */
 	public String getOldPassword() {
 		return oldPassword;
 	}
-
 	/**
-	 * @param oldPassword セットする oldPassword
+	 * @param 旧パスワード セットする
 	 */
 	public void setOldPassword(String oldPassword) {
 		this.oldPassword = oldPassword;
 	}
-
 	/**
-	 * @return password1
+	 * @return 新パスワード
 	 */
-	public String getPassword1() {
-		return password1;
+	public String getNewPassword() {
+		return newPassword;
+	}
+	/**
+	 * @param 新パスワード セットする
+	 */
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	/**
+	 * @return 新パスワード（再入力）
+	 */
+	public String getNewPasswordConfirm() {
+		return newPasswordConfirm;
+	}
+	/**
+	 * @param 新パスワード（再入力）セットする
+	 */
+	public void setNewPasswordConfirm(String newPasswordConfirm) {
+		this.newPasswordConfirm = newPasswordConfirm;
 	}
 
-	/**
-	 * @param password1 セットする password1
-	 */
-	public void setPassword1(String password1) {
-		this.password1 = password1;
-	}
-
-	/**
-	 * @return password2
-	 */
-	public String getPassword2() {
-		return password2;
-	}
-
-	/**
-	 * @param password2 セットする password2
-	 */
-	public void setPassword2(String password2) {
-		this.password2 = password2;
-	}
 }

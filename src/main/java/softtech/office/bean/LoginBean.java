@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class LoginBean implements Serializable {
+
 	// 社員ID
 	@NotEmpty(message="社員IDを入力してください。")
 	private String employeeID;
